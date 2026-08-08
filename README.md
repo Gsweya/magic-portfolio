@@ -6,6 +6,8 @@ View the demo [here](https://demo.magic-portfolio.com).
 
 ![Magic Portfolio](public/images/og/home.jpg)
 
+Launch your portfolio on [Aveiro](https://www.aveiro.app/marketplace/spotlight), our managed publishing platform. Update case studies, blog posts and content through MCP from your favorite AI tools.
+
 ## Getting started
 
 **1. Clone the repository**
