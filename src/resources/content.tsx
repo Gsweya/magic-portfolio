@@ -1,50 +1,41 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
-import { Line, Row, Text } from "@once-ui-system/core";
+import {
+  About,
+  Blog,
+  Gallery,
+  Home,
+  Newsletter,
+  Person,
+  Social,
+  Work,
+} from "@/types";
+import { Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
+  firstName: "Galanda",
+  lastName: "John Sweya",
+  name: `Galanda John Sweya`,
+  role: "Software Engineer",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "sweya.galanda@gmail.com",
+  location: "Africa/Dar_es_Salaam", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "Swahili"], // optional: Leave the array empty if you don't want to display languages
   locale: "en", // BCP 47 language tag for the HTML lang attribute, e.g., 'en', 'ja', 'zh-TW'
 };
 
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: <>My weekly newsletter about creativity and engineering</>,
 };
 
 const social: Social = [
   // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
+  // Import new icons in /resources/icons.ts
   // Set essentials: true for links you want to show on the about page
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
-    essential: true,
-  },
-  {
-    name: "LinkedIn",
-    icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-    essential: true,
-  },
-  {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://github.com/Gsweya",
     essential: true,
   },
   {
@@ -52,6 +43,12 @@ const social: Social = [
     icon: "email",
     link: `mailto:${person.email}`,
     essential: true,
+  },
+  {
+    name: "Instagram",
+    icon: "instagram",
+    link: "https://instagram.com/gamicsprime",
+    essential: false,
   },
 ];
 
@@ -61,24 +58,24 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Technology shapes the way we live</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
-        <Line background="brand-alpha-strong" vert height="20" />
+        <strong className="ml-4">Xhubantu</strong>{" "}
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/xhubantu",
   },
   subline: (
     <>
       I'm {person.firstName}, a {person.role.toLowerCase()} at{" "}
-      <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+      <Text as="span" size="xl" weight="strong">Xhubantu</Text>, where I build event-based social
+      software. Every line of code is an argument for how the future should function.
     </>
   ),
 };
@@ -87,7 +84,7 @@ const about: About = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role} from Tanzania`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -96,60 +93,67 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
     display: true,
-    title: "Introduction",
+    title: "A Personal Note",
     description: (
       <>
-        {person.firstName} is a {person.location.split("/")[1]?.replace("_", " ")}-based {person.role.toLowerCase()} with a passion for transforming complex challenges
-        into simple, elegant design solutions. Their work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        I prefer to see the world in its practical and often difficult reality rather than through
+        idealized or imaginary expectations, that it is a construction that has come from the choice
+        of us humans. Because through that I can answer why I do what I do, as I do it to create
+        personal fulfilment through solving problems for other people through the skills I have
+        acquired. I like working with difficult challenges, learning through failure, and
+        continuously growing with my skills to retain long value.
       </>
     ),
+  },
+  personalInfo: {
+    display: true,
+    title: "Personal Information",
+    items: [
+      { label: "Full Name", value: "Galanda John Sweya" },
+      { label: "Date of Birth", value: "8 April 2006" },
+      { label: "Place of Birth", value: "Mwanza, Tanzania" },
+      { label: "Home Region", value: "Simiyu" },
+      { label: "Nationality", value: "Tanzanian" },
+      { label: "Languages", value: "English, Swahili" },
+    ],
   },
   work: {
     display: true, // set to false to hide this section
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Xhubantu",
+        timeframe: "2025 - Present",
+        role: "Co-founder & Developer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Building an event-based social networking platform bringing together event discovery,
+            ticketing, and content media sharing into one hub.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Founded on the belief that the next wave of social media will be event apps that enable
+            people to connect in physical and genuine meetups.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Codert",
+        timeframe: "2025",
+        role: "Backend Developer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Developed a coding platform for students to automate grading during first-year
+            industrial practical training at UDOM.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Rewrote the system from Java Servlet to Spring Boot, powering automated grading for C++,
+            JavaScript, Java and Python with Supabase and Fly.io.
           </>,
         ],
         images: [],
@@ -161,12 +165,20 @@ const about: About = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "University of Dodoma",
+        description: <>BSc Computer Science (2024 – Present).</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Mzumbe Secondary School",
+        description: <>Advanced Level, PCM (2022 – 2024).</>,
+      },
+      {
+        name: "John Merlini Secondary School",
+        description: <>O-Level (2018 – 2021).</>,
+      },
+      {
+        name: "Martin Luther Primary School",
+        description: <>Primary Education (2015 – 2017).</>,
       },
     ],
   },
@@ -175,60 +187,63 @@ const about: About = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
-        ),
+        title: "Programming Languages",
+        description: <>Languages I use to build reliable, secure and scalable software.</>,
         tags: [
           {
-            name: "Figma",
-            icon: "figma",
+            name: "Python",
+            icon: "python",
           },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        title: "Next.js",
-        description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
-        ),
-        tags: [
           {
             name: "JavaScript",
             icon: "javascript",
           },
           {
-            name: "Next.js",
-            icon: "nextjs",
+            name: "TypeScript",
+            icon: "typescript",
           },
           {
-            name: "Supabase",
-            icon: "supabase",
+            name: "Java",
+            icon: "java",
           },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
+        images: [],
+      },
+      {
+        title: "Frameworks & Technologies",
+        description: <>The tools and infrastructure I reach for when building real systems.</>,
+        tags: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "Spring Boot",
+            icon: "spring",
+          },
+          {
+            name: "React",
+            icon: "react",
+          },
+          {
+            name: "REST APIs",
+            icon: "openLink",
+          },
+          {
+            name: "Git & GitHub",
+            icon: "github",
           },
         ],
+        images: [],
+      },
+      {
+        title: "Other Skills",
+        description: (
+          <>Secondary craft that informs my work and interests.</>
+        ),
+        tags: [
+          {
+            name: "Graphics Design",
+            icon: "figma",
+          },
+        ],
+        images: [],
       },
     ],
   },
@@ -237,8 +252,8 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
+  title: "Writings",
+  description: `Essays and reflections on technology, economics, and the nature of work`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
@@ -247,8 +262,8 @@ const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
+  description: `Projects by ${person.name}`,
+  // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
 
@@ -257,48 +272,11 @@ const gallery: Gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
   images: [
     {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
+      src: "/images/cover-page-web.jpg",
+      alt: "Cover page",
       orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
     },
   ],
 };

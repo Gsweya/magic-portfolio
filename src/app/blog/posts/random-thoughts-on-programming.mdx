@@ -1,0 +1,52 @@
+---
+title: "Random Thoughts on Programming"
+subtitle: "Notes on building software that behaves correctly"
+summary: "On reliability, scalability and maintainability — what separates good software from junk, and how AI fits into building it."
+publishedAt: "2025-10-15"
+tag: "Programming"
+---
+
+## TL;DR
+
+I'm bad at computers. But I think, when building software, the biggest concern is about the behavior of the software in its environment (the hardware and users).
+
+In general, good software systems have these properties: (Source: *Designing Data Intensive Applications*, Martin Kleppmann)
+
+- Reliability (Tolerant to human, software and hardware errors)
+- Scalability (Can handle load increments)
+- Maintainability (Has simplicity, others can fix it if it breaks, and can add features, and understand it)
+
+I'll try to make it easier: see how someone will act differently based on where or with whom they are and what they're exposed to (danger, success, or failure), and hence their reactions or emotions give insight or info on their strengths and weaknesses, but they respond all based on their paradigms of thinking or least software components?
+
+The same goes for the computer. The only difference is: computers are less forgiving of human mistakes. From the input we give (data of course), the code or structure we used (frameworks or libraries), to where it lives (server), we expect it to behave in a predictable manner because that way it is safe (you are sure it will do what it has to do):
+
+- Server required data
+- Handle intense data throughput
+- Keep the data safe and its users'
+- Respond on time
+
+And I think it's one of the points that I have been missing when it comes to coding with AI. It's fine as long as it produces code that behaves in the expected manner, in a way that's generally acceptable, that it is:
+
+- **Secure** (has to keep people's data and itself safe, because some code can be trade secrets)
+- **Scalable** (can be extended to more people)
+- **Cost effective** (doesn't waste money)
+- **Fault tolerant** (can take hits well and survive turbulence)
+
+Like even if you write code without AI, I think it'll have to go band for band with those criteria. And good software comes from procedures built on strict rules:
+
+- Language you pick to write the code
+- The infrastructure you use (database, backend infrastructure, frontend serving, monolith or micro architecture)
+- How you define processes running in the background (Input A, should give Output A)
+- The business logic you choose for your software (Users should access features A and B when they pay for it)
+
+And with that in mind, I think it's what differentiates good software from junk. People don't care about what framework you use, languages you use, or tools like AI.
+
+It's literally expected for technology to be the highest level of abstraction, to the extent that the user doesn't have to face the hardcore background challenges or hurdles. And the ultimatum direction of software is more abstraction that makes sense and is sustainable (avoid levels of abstraction that introduce a lot of complexity that is just not necessary).
+
+People only want reliable software (one that behaves as expected), and that is the challenge when building new things today: past software has been so good that people don't expect mistakes to ever happen, which explains why people get cynical when faults or system failures occur.
+
+No software is an island. Each one has its defects, so you build software with well calculated trade-offs based on the resources you have. Good software is expensive (in terms of skills — needs a lot of skills, and of course money for the infrastructure). Every good system is a proper balance between the implementation of software and hardware.
+
+You have to build whilst thinking of the evolvability of the software. You should ask yourself: what will this software grow into in the future? Because when people start to use these solutions, they demand stability with the hope of more progress in simplicity and quality of the product! Apps like Instagram are not the same as when they started; they have evolved to newer forms with more features to meet the current society's vibe and expectations.
+
+Your software should also be measurable. By being measurable, you should be able to perform some key metrics like availability, load times, latencies, and response times. All these metrics give you insight into what is going wrong in your system, and what is just not serving the entire purpose or is holding you back. Experience without reflection just repeats mistakes faster.

@@ -171,6 +171,20 @@ export interface About extends BasePageConfig {
       }>;
     }>;
   };
+  /** Personal information section */
+  personalInfo: {
+    /** Whether to display personal information */
+    display: boolean;
+    /** Title for the personal information section */
+    title: string;
+    /** List of personal info items */
+    items: Array<{
+      /** Label of the item */
+      label: string;
+      /** Value of the item */
+      value: string;
+    }>;
+  };
   /** Studies/education section */
   studies: {
     /** Whether to display studies section */

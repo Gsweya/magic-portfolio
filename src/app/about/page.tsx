@@ -35,6 +35,11 @@ export default function About() {
       items: [],
     },
     {
+      title: about.personalInfo.title,
+      display: about.personalInfo.display,
+      items: about.personalInfo.items.map((item) => item.label),
+    },
+    {
       title: about.work.title,
       display: about.work.display,
       items: about.work.experiences.map((experience) => experience.company),
@@ -200,6 +205,29 @@ export default function About() {
             <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
               {about.intro.description}
             </Column>
+          )}
+
+          {about.personalInfo.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.personalInfo.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
+                {about.personalInfo.title}
+              </Heading>
+              <Column fillWidth gap="l" marginBottom="40">
+                {about.personalInfo.items.map((item, index) => (
+                  <Row key={`${item.label}-${index}`} fillWidth horizontal="between" gap="l">
+                    <Text id={item.label} variant="heading-strong-l" onBackground="neutral-weak">
+                      {item.label}
+                    </Text>
+                    <Text variant="body-default-l">{item.value}</Text>
+                  </Row>
+                ))}
+              </Column>
+            </>
           )}
 
           {about.work.display && (
