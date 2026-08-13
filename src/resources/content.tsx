@@ -151,11 +151,12 @@ const about: About = {
       {
         company: "PSSF",
         timeframe: "3 August - 25 September 2026",
-        role: "IPT Intern",
+        role: "Developer",
         achievements: [
           <>
-            Undertaking my Industrial Practical Training (IPT) at the PSSF headquarters in Dodoma,
-            applying my computer science skills to real systems in a professional environment.
+            Undertaking my Industrial Practical Training (IPT) as a Developer in the Development
+            Department at the PSSF headquarters in Dodoma, applying my computer science skills to
+            real systems in a professional environment.
           </>,
         ],
         images: [],
