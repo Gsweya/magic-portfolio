@@ -132,6 +132,14 @@ export default async function Project({
           />
         )}
         <Heading variant="display-strong-m">{post.metadata.title}</Heading>
+        {post.metadata.type && (
+          <Tag
+            size="m"
+            variant={post.metadata.type === "client" ? "brand" : "neutral"}
+            prefixIcon={post.metadata.type === "client" ? "world" : "person"}
+            label={post.metadata.type === "client" ? "Client project" : "Personal project"}
+          />
+        )}
         <Text variant="body-default-xs" onBackground="neutral-weak">
           {post.metadata.publishedAt &&
             `Built ${formatDate(post.metadata.publishedAt).toLowerCase()}`}
@@ -166,7 +174,7 @@ export default async function Project({
       </Column>
       {(post.metadata.stack?.length ?? 0) > 0 && (
         <Column fillWidth marginTop="16">
-          <Accordion title="Technical Stack" icon="chevronDown" size="m" radius="l">
+          <Accordion title="Technical Stack" icon="chevronDown" size="m" radius="l" open={true}>
             <Row wrap gap="8" paddingY="16">
               {post.metadata.stack?.map((s) => (
                 <Tag key={s} size="l" prefixIcon={stackIcon(s)}>

@@ -11,6 +11,7 @@ import {
   Meta,
   Line,
   SmartLink,
+  Flex,
 } from "@once-ui-system/core";
 import { home, about, blog, work, person, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
@@ -135,7 +136,9 @@ export default function Home() {
                 <Text variant="body-default-m">View all works</Text>
               </SmartLink>
             </Row>
-            <Projects range={[1, 1]} exclude={["codert", "muda"]} columns="1" />
+            <Flex fillWidth horizontal="center">
+              <Projects range={[1, 1]} exclude={["codert", "muda"]} columns="1" maxWidth={28} />
+            </Flex>
           </Column>
         </RevealFx>
       )}

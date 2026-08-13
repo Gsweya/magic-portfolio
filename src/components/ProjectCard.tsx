@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, Column, Media, Row, Avatar, Text, SmartLink } from "@once-ui-system/core";
+import { Card, Column, Media, Row, Avatar, Text, SmartLink, Tag } from "@once-ui-system/core";
 import { person } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 
@@ -14,6 +14,7 @@ interface ProjectCardProps {
   avatars: { src: string }[];
   link: string;
   publishedAt?: string;
+  type?: string;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -26,6 +27,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   avatars,
   link,
   publishedAt,
+  type,
 }) => {
   return (
     <Card
@@ -67,6 +69,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           <Text variant="heading-strong-l" wrap="balance">
             {title}
           </Text>
+          {type && (
+            <Tag
+              size="s"
+              variant={type === "client" ? "brand" : "neutral"}
+              prefixIcon={type === "client" ? "world" : "person"}
+              label={type === "client" ? "Client project" : "Personal project"}
+            />
+          )}
           {description?.trim() && (
             <Text variant="body-default-s" onBackground="neutral-weak" wrap="balance">
               {description}

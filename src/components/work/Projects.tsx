@@ -6,9 +6,10 @@ interface ProjectsProps {
   range?: [number, number?];
   exclude?: string[];
   columns?: "1" | "2" | "3";
+  maxWidth?: number | "xs" | "s" | "m" | "l" | "xl";
 }
 
-export function Projects({ range, exclude, columns = "2" }: ProjectsProps) {
+export function Projects({ range, exclude, columns = "2", maxWidth }: ProjectsProps) {
   let allProjects = getPosts(["src", "app", "work", "projects"]);
 
   // Exclude by slug (exact match)
@@ -25,7 +26,14 @@ export function Projects({ range, exclude, columns = "2" }: ProjectsProps) {
     : sortedProjects;
 
   return (
-    <Grid columns={columns} s={{ columns: 1 }} fillWidth marginBottom="40" gap="16">
+    <Grid
+      columns={columns}
+      s={{ columns: 1 }}
+      fillWidth={!maxWidth}
+      marginBottom="40"
+      gap="16"
+      maxWidth={maxWidth}
+    >
       {displayedProjects.map((post, index) => (
         <ProjectCard
           priority={index < 2}
@@ -38,6 +46,7 @@ export function Projects({ range, exclude, columns = "2" }: ProjectsProps) {
           avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}
           link={post.metadata.link || ""}
           publishedAt={post.metadata.publishedAt}
+          type={post.metadata.type}
         />
       ))}
     </Grid>
