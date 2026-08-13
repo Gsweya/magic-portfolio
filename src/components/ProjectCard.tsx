@@ -21,6 +21,14 @@ interface ProjectCardProps {
   link: string;
 }
 
+function domainOf(url: string): string {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return url;
+  }
+}
+
 export const ProjectCard: React.FC<ProjectCardProps> = ({
   href,
   images = [],
@@ -48,7 +56,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         gap="l"
       >
         {title && (
-          <Flex flex={5}>
+          <Flex flex={5} gap="12" vertical="center" wrap>
+            {link && (
+              <img
+                src={`https://www.google.com/s2/favicons?domain=${domainOf(link)}&sz=64`}
+                alt=""
+                width={28}
+                height={28}
+                style={{ borderRadius: 6, flexShrink: 0 }}
+              />
+            )}
             <Heading as="h2" wrap="balance" variant="heading-strong-xl">
               {title}
             </Heading>

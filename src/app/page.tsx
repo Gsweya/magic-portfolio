@@ -10,8 +10,9 @@ import {
   Schema,
   Meta,
   Line,
+  SmartLink,
 } from "@once-ui-system/core";
-import { home, about, person, baseURL, routes } from "@/resources";
+import { home, about, blog, work, person, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
@@ -100,30 +101,44 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
-      </RevealFx>
+
+      {routes["/work"] && (
+        <RevealFx translateY="16" delay={0.6} fillWidth>
+          <Column fillWidth gap="24">
+            <Row fillWidth horizontal="between" vertical="center" paddingX="l">
+              <Heading as="h2" variant="display-strong-xs">
+                Selected Work
+              </Heading>
+              <SmartLink href={work.path}>
+                <Text variant="body-default-m">View all works</Text>
+              </SmartLink>
+            </Row>
+            <Projects range={[1, 1]} />
+          </Column>
+        </RevealFx>
+      )}
+
       {routes["/blog"] && (
         <Column fillWidth gap="24" marginBottom="l">
           <Row fillWidth paddingRight="64">
             <Line maxWidth={48} />
           </Row>
-          <Row fillWidth gap="24" marginTop="40" s={{ direction: "column" }}>
-            <Row flex={1} paddingLeft="l" paddingTop="24">
-              <Heading as="h2" variant="display-strong-xs" wrap="balance">
-                Latest from the blog
-              </Heading>
-            </Row>
-            <Row flex={3} paddingX="20">
-              <Posts range={[1, 2]} columns="2" />
-            </Row>
+          <Row fillWidth horizontal="between" vertical="center" paddingX="l" marginTop="40">
+            <Heading as="h2" variant="display-strong-xs">
+              Recent Writings
+            </Heading>
+            <SmartLink href={blog.path}>
+              <Text variant="body-default-m">View all writings</Text>
+            </SmartLink>
+          </Row>
+          <Row flex={3} paddingX="20">
+            <Posts range={[1, 2]} columns="2" thumbnail />
           </Row>
           <Row fillWidth paddingLeft="64" horizontal="end">
             <Line maxWidth={48} />
           </Row>
         </Column>
       )}
-      <Projects range={[2]} />
       <Mailchimp />
     </Column>
   );

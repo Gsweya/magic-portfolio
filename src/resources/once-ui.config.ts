@@ -21,7 +21,7 @@ const routes: RoutesConfig = {
   "/about": true,
   "/work": true,
   "/blog": true,
-  "/gallery": true,
+  "/gallery": false,
 };
 
 const display: DisplayConfig = {
@@ -37,11 +37,10 @@ const protectedRoutes: ProtectedRoutesConfig = {};
 // Import and set font for each variant
 import { Geist } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
-import localFont from "next/font/local";
 
-const heading = localFont({
-  src: "./fonts/Trovical Reg.ttf",
+const heading = Geist({
   variable: "--font-heading",
+  subsets: ["latin"],
   display: "swap",
 });
 

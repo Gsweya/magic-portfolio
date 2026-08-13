@@ -251,7 +251,7 @@ const about: About = {
 
 const blog: Blog = {
   path: "/blog",
-  label: "Blog",
+  label: "Writings",
   title: "Writings",
   description: `Essays and reflections on technology, economics, and the nature of work`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
@@ -260,8 +260,8 @@ const blog: Blog = {
 
 const work: Work = {
   path: "/work",
-  label: "Work",
-  title: `Projects – ${person.name}`,
+  label: "Works",
+  title: "Works",
   description: `Projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
