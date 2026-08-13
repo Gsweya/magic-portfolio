@@ -77,7 +77,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
           const isActive = activeId === section.title;
 
           return (
-            <Column key={sectionIndex} gap="12">
+            <Column key={sectionIndex} gap="8">
               <Flex
                 cursor="interactive"
                 className={styles.hover}
@@ -88,7 +88,8 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
                 radius="full"
                 {...(isActive
                   ? {
-                      background: "surface",
+                      background: "neutral-alpha-weak",
+                      border: "neutral-alpha-medium",
                       shadow: "s",
                       style: {
                         backdropFilter: "blur(16px)",
@@ -98,11 +99,6 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
                   : {})}
                 onClick={() => scrollTo(section.title, 80)}
               >
-                <Flex
-                  height="1"
-                  minWidth="16"
-                  background={isActive ? "brand-strong" : "neutral-strong"}
-                ></Flex>
                 <Text {...(isActive ? { onBackground: "brand-strong" } : {})}>
                   {section.title}
                 </Text>
@@ -117,11 +113,13 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
                       className={styles.hover}
                       gap="12"
                       paddingLeft="24"
+                      paddingY="4"
                       vertical="center"
                       onClick={() => scrollTo(item, 80)}
                     >
-                      <Flex height="1" minWidth="8" background="neutral-strong"></Flex>
-                      <Text>{item}</Text>
+                      <Text variant="body-default-xs" onBackground="neutral-weak">
+                        {item}
+                      </Text>
                     </Flex>
                   ))}
                 </>

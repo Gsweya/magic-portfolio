@@ -226,7 +226,7 @@ const about: About = {
   },
   interests: {
     display: true,
-    title: "Interests",
+    title: "Fields of Interest",
     items: [
       { label: "Primary", value: "Graphics Design" },
     ],
@@ -240,7 +240,7 @@ const about: About = {
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "Stack Competence",
     skills: [
       {
         title: "Programming Languages",

@@ -11,9 +11,11 @@ import {
   Meta,
   Schema,
   Row,
+  Accordion,
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
+import { TechMarquee } from "@/components/TechMarquee";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
@@ -40,14 +42,14 @@ export default function About() {
       items: about.personalInfo.items.map((item) => item.label),
     },
     {
-      title: about.interests?.title ?? "",
-      display: about.interests?.display ?? false,
-      items: about.interests?.items.map((item) => item.label) ?? [],
+      title: about.technical.title,
+      display: about.technical.display,
+      items: about.technical.skills.flatMap((skill) => (skill.tags ?? []).map((tag) => tag.name)),
     },
     {
-      title: about.references?.title ?? "",
-      display: about.references?.display ?? false,
-      items: about.references?.items.map((item) => item.label) ?? [],
+      title: about.interests?.title ?? "",
+      display: about.interests?.display ?? false,
+      items: about.interests?.items.map((item) => item.value) ?? [],
     },
     {
       title: about.work.title,
@@ -60,11 +62,16 @@ export default function About() {
       items: about.studies.institutions.map((institution) => institution.name),
     },
     {
-      title: about.technical.title,
-      display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
+      title: about.references?.title ?? "",
+      display: about.references?.display ?? false,
+      items: about.references?.items.map((item) => item.label) ?? [],
     },
   ];
+
+  const stackItems = (about.technical.skills ?? []).flatMap((skill) =>
+    (skill.tags ?? []).map((tag) => ({ name: tag.name, icon: tag.icon })),
+  );
+  const interestItems = (about.interests?.items ?? []).map((item) => item.value);
   return (
     <Column maxWidth="m">
       <Schema
@@ -211,51 +218,76 @@ export default function About() {
             )}
           </Column>
 
+          {(about.technical.display || about.interests?.display) && (
+            <Row fillWidth wrap gap="xl" marginBottom="xl" vertical="start" s={{ direction: "column" }}>
+              {about.technical.display && (
+                <Column flex={1} gap="m">
+                  <Heading as="h2" id={about.technical.title} variant="heading-strong-m">
+                    {about.technical.title}
+                  </Heading>
+                  <Row wrap gap="8">
+                    {stackItems.map((item, index) => (
+                      <Tag key={`${item.name}-${index}`} size="l" prefixIcon={item.icon}>
+                        {item.name}
+                      </Tag>
+                    ))}
+                  </Row>
+                </Column>
+              )}
+              {about.interests?.display && (
+                <Column flex={1} gap="m">
+                  <Heading as="h2" id={about.interests.title} variant="heading-strong-m">
+                    {about.interests.title}
+                  </Heading>
+                  <Row wrap gap="8">
+                    {interestItems.map((value, index) => (
+                      <Tag key={`${value}-${index}`} size="l">
+                        {value}
+                      </Tag>
+                    ))}
+                  </Row>
+                </Column>
+              )}
+            </Row>
+          )}
+
           {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
-              {about.intro.description}
+            <Column fillWidth gap="m" marginBottom="m">
+              <Accordion
+                id={about.intro.title}
+                title={about.intro.title}
+                size="m"
+                radius="l"
+                open={false}
+              >
+                <Column paddingY="8" gap="m" textVariant="body-default-l">
+                  {about.intro.description}
+                </Column>
+              </Accordion>
             </Column>
           )}
 
           {about.personalInfo.display && (
-            <>
-              <Heading
-                as="h2"
+            <Column fillWidth gap="m" marginBottom="40">
+              <Accordion
                 id={about.personalInfo.title}
-                variant="display-strong-s"
-                marginBottom="m"
+                title={about.personalInfo.title}
+                size="m"
+                radius="l"
+                open={false}
               >
-                {about.personalInfo.title}
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.personalInfo.items.map((item, index) => (
-                  <Row key={`${item.label}-${index}`} fillWidth horizontal="between" gap="l">
-                    <Text id={item.label} variant="heading-strong-l" onBackground="neutral-weak">
-                      {item.label}
-                    </Text>
-                    <Text variant="body-default-l">{item.value}</Text>
-                  </Row>
-                ))}
-              </Column>
-            </>
-          )}
-
-          {about.interests?.display && (
-            <>
-              <Heading as="h2" id={about.interests.title} variant="display-strong-s" marginBottom="m">
-                {about.interests.title}
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.interests.items.map((item, index) => (
-                  <Row key={`${item.label}-${index}`} fillWidth horizontal="between" gap="l">
-                    <Text id={item.label} variant="heading-strong-l" onBackground="neutral-weak">
-                      {item.label}
-                    </Text>
-                    <Text variant="body-default-l">{item.value}</Text>
-                  </Row>
-                ))}
-              </Column>
-            </>
+                <Column fillWidth gap="l" paddingY="8">
+                  {about.personalInfo.items.map((item, index) => (
+                    <Row key={`${item.label}-${index}`} fillWidth horizontal="between" gap="l">
+                      <Text id={item.label} variant="heading-strong-l" onBackground="neutral-weak">
+                        {item.label}
+                      </Text>
+                      <Text variant="body-default-l">{item.value}</Text>
+                    </Row>
+                  ))}
+                </Column>
+              </Accordion>
+            </Column>
           )}
 
           {about.references?.display && (
@@ -340,74 +372,52 @@ export default function About() {
               <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
                 {about.studies.title}
               </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
+              <Column fillWidth marginBottom="40">
+                <Row
+                  fillWidth
+                  paddingY="m"
+                  paddingX="s"
+                  borderBottom="neutral-medium"
+                  gap="l"
+                  horizontal="between"
+                >
+                  <Text variant="label-strong-s" onBackground="neutral-weak">
+                    Institution
+                  </Text>
+                  <Text variant="label-strong-s" onBackground="neutral-weak">
+                    Details
+                  </Text>
+                </Row>
                 {about.studies.institutions.map((institution, index) => (
-                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Text id={institution.name} variant="heading-strong-l">
+                  <Row
+                    key={`${institution.name}-${index}`}
+                    fillWidth
+                    paddingY="m"
+                    paddingX="s"
+                    borderBottom="neutral-alpha-medium"
+                    gap="l"
+                    horizontal="between"
+                    vertical="center"
+                  >
+                    <Text id={institution.name} variant="body-default-m">
                       {institution.name}
                     </Text>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
+                    <Text variant="body-default-m" onBackground="neutral-weak">
                       {institution.description}
                     </Text>
-                  </Column>
+                  </Row>
                 ))}
               </Column>
             </>
           )}
 
-          {about.technical.display && (
-            <>
-              <Heading
-                as="h2"
-                id={about.technical.title}
-                variant="display-strong-s"
-                marginBottom="40"
-              >
-                {about.technical.title}
+          {about.technical.display && stackItems.length > 0 && (
+            <Column fillWidth gap="m" marginTop="40">
+              <Heading as="h2" variant="display-strong-s" align="center">
+                Technologies I work with
               </Heading>
-              <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
-                    <Text id={skill.title} variant="heading-strong-l">
-                      {skill.title}
-                    </Text>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
-                      {skill.description}
-                    </Text>
-                    {skill.tags && skill.tags.length > 0 && (
-                      <Row wrap gap="8" paddingTop="8">
-                        {skill.tags.map((tag, tagIndex) => (
-                          <Tag key={`${skill.title}-${tagIndex}`} size="l" prefixIcon={tag.icon}>
-                            {tag.name}
-                          </Tag>
-                        ))}
-                      </Row>
-                    )}
-                    {skill.images && skill.images.length > 0 && (
-                      <Row fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
-                          <Row
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            minWidth={image.width}
-                            height={image.height}
-                          >
-                            <Media
-                              enlarge
-                              radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
-                            />
-                          </Row>
-                        ))}
-                      </Row>
-                    )}
-                  </Column>
-                ))}
-              </Column>
-            </>
+              <TechMarquee items={stackItems} />
+            </Column>
           )}
         </Column>
       </Row>

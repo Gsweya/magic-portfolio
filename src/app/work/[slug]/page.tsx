@@ -14,11 +14,11 @@ import {
   Avatar,
   Line,
   Tag,
-  Accordion,
 } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
+import { TechMarquee } from "@/components/TechMarquee";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
 
@@ -173,16 +173,13 @@ export default async function Project({
         <CustomMDX source={post.content} />
       </Column>
       {(post.metadata.stack?.length ?? 0) > 0 && (
-        <Column fillWidth marginTop="16">
-          <Accordion title="Technical Stack" icon="chevronDown" size="m" radius="l" open={true}>
-            <Row wrap gap="8" paddingY="16">
-              {post.metadata.stack?.map((s) => (
-                <Tag key={s} size="l" prefixIcon={stackIcon(s)}>
-                  {s}
-                </Tag>
-              ))}
-            </Row>
-          </Accordion>
+        <Column fillWidth gap="m" marginTop="24">
+          <Heading as="h2" variant="display-strong-xs" align="center">
+            Tech stack
+          </Heading>
+          <TechMarquee
+            items={(post.metadata.stack ?? []).map((s) => ({ name: s, icon: stackIcon(s) }))}
+          />
         </Column>
       )}
       <Column fillWidth gap="40" horizontal="center" marginTop="16">
