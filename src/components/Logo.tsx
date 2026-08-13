@@ -39,8 +39,6 @@ export const Logo: React.FC<LogoProps> = ({ width = 96, height, style, className
       style={{
         objectFit: "contain",
         display: "block",
-        borderRadius: "50%",
-        border: "1px solid var(--neutral-alpha-medium)",
         ...style,
       }}
     />

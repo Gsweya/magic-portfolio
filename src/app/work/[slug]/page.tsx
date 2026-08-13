@@ -153,15 +153,8 @@ export default async function Project({
       )}
       {post.metadata.images.length > 0 && (
         <Flex fillWidth horizontal="center" marginBottom="32">
-          <Flex
-            width={128}
-            height={128}
-            radius="full"
-            overflow="hidden"
-            border="neutral-alpha-weak"
-            background="neutral-alpha-weak"
-          >
-            <Media fill objectFit="cover" alt={post.metadata.title} src={post.metadata.images[0]} />
+          <Flex width={96} height={96}>
+            <Media fill objectFit="contain" alt={post.metadata.title} src={post.metadata.images[0]} />
           </Flex>
         </Flex>
       )}
