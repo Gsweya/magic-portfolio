@@ -18,6 +18,7 @@ const person: Person = {
   avatar: "/images/avatar.jpg",
   email: "sweya.galanda@gmail.com",
   location: "Africa/Dar_es_Salaam", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  displayLocation: "Dodoma, Tanzania",
   languages: ["English", "Swahili"], // optional: Leave the array empty if you don't want to display languages
   locale: "en", // BCP 47 language tag for the HTML lang attribute, e.g., 'en', 'ja', 'zh-TW'
 };
@@ -195,6 +196,10 @@ const about: About = {
             icon: "python",
           },
           {
+            name: "Go",
+            icon: "go",
+          },
+          {
             name: "JavaScript",
             icon: "javascript",
           },
@@ -220,6 +225,22 @@ const about: About = {
           {
             name: "React",
             icon: "react",
+          },
+          {
+            name: "Docker",
+            icon: "docker",
+          },
+          {
+            name: "PostgreSQL",
+            icon: "postgresql",
+          },
+          {
+            name: "Redis",
+            icon: "redis",
+          },
+          {
+            name: "RAG Automations",
+            icon: "openai",
           },
           {
             name: "REST APIs",

@@ -33,8 +33,12 @@ function domainOf(url: string): string {
 const stackIcons: Record<string, string> = {
   "spring boot": "spring",
   spring: "spring",
+  go: "go",
   supabase: "supabase",
   "fly.io": "rocket",
+  docker: "docker",
+  postgresql: "postgresql",
+  redis: "redis",
   java: "java",
   javascript: "javascript",
   python: "python",
@@ -44,6 +48,7 @@ const stackIcons: Record<string, string> = {
   "c++": "document",
   mobile: "document",
   "event infrastructure": "document",
+  "rag automations": "openai",
 };
 
 function stackIcon(name: string): string {
