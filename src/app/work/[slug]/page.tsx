@@ -152,15 +152,18 @@ export default async function Project({
         </Row>
       )}
       {post.metadata.images.length > 0 && (
-        <Media
-          priority
-          aspectRatio="16 / 9"
-          radius="m"
-          objectFit="contain"
-          background="neutral-alpha-weak"
-          alt={post.metadata.title}
-          src={post.metadata.images[0]}
-        />
+        <Flex fillWidth horizontal="center" marginBottom="32">
+          <Flex
+            width={128}
+            height={128}
+            radius="full"
+            overflow="hidden"
+            border="neutral-alpha-weak"
+            background="neutral-alpha-weak"
+          >
+            <Media fill objectFit="cover" alt={post.metadata.title} src={post.metadata.images[0]} />
+          </Flex>
+        </Flex>
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <CustomMDX source={post.content} />

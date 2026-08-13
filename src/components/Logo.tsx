@@ -36,7 +36,13 @@ export const Logo: React.FC<LogoProps> = ({ width = 96, height, style, className
       width={width}
       height={height ?? Math.round((width * 597) / 512)}
       className={className}
-      style={{ objectFit: "contain", display: "block", ...style }}
+      style={{
+        objectFit: "contain",
+        display: "block",
+        borderRadius: "50%",
+        border: "1px solid var(--neutral-alpha-medium)",
+        ...style,
+      }}
     />
   );
 };

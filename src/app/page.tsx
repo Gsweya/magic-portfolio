@@ -135,7 +135,7 @@ export default function Home() {
                 <Text variant="body-default-m">View all works</Text>
               </SmartLink>
             </Row>
-            <Projects range={[1, 1]} />
+            <Projects range={[1, 1]} exclude={["codert"]} />
           </Column>
         </RevealFx>
       )}

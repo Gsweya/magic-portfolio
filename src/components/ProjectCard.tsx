@@ -34,16 +34,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <Column fillWidth gap="m">
       {images.length > 0 && (
-        <Media
-          priority={priority}
-          fillWidth
-          aspectRatio="16 / 9"
-          radius="l"
-          objectFit="contain"
-          background="neutral-alpha-weak"
-          alt={title}
-          src={images[0]}
-        />
+        <Flex fillWidth horizontal="center" paddingTop="16">
+          <Flex
+            width={112}
+            height={112}
+            radius="full"
+            overflow="hidden"
+            border="neutral-alpha-weak"
+            background="neutral-alpha-weak"
+          >
+            <Media fill objectFit="cover" alt={title} src={images[0]} />
+          </Flex>
+        </Flex>
       )}
       <Flex
         s={{ direction: "column" }}
