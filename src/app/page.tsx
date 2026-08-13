@@ -102,6 +102,24 @@ export default function Home() {
         </Column>
       </Column>
 
+      {home.manifesto && home.manifesto.length > 0 && (
+        <RevealFx translateY="16" fillWidth>
+          <Column fillWidth maxWidth="s" horizontal="center" gap="m" paddingY="xl">
+            {home.manifesto.map((paragraph, index) => (
+              <Text
+                key={index}
+                wrap="balance"
+                variant="body-default-l"
+                onBackground="neutral-weak"
+                style={{ lineHeight: 1.7 }}
+              >
+                {paragraph}
+              </Text>
+            ))}
+          </Column>
+        </RevealFx>
+      )}
+
       {routes["/work"] && (
         <RevealFx translateY="16" delay={0.6} fillWidth>
           <Column fillWidth gap="24">

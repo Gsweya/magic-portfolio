@@ -40,6 +40,16 @@ export default function About() {
       items: about.personalInfo.items.map((item) => item.label),
     },
     {
+      title: about.interests?.title ?? "",
+      display: about.interests?.display ?? false,
+      items: about.interests?.items.map((item) => item.label) ?? [],
+    },
+    {
+      title: about.references?.title ?? "",
+      display: about.references?.display ?? false,
+      items: about.references?.items.map((item) => item.label) ?? [],
+    },
+    {
       title: about.work.title,
       display: about.work.display,
       items: about.work.experiences.map((experience) => experience.company),
@@ -219,6 +229,42 @@ export default function About() {
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
                 {about.personalInfo.items.map((item, index) => (
+                  <Row key={`${item.label}-${index}`} fillWidth horizontal="between" gap="l">
+                    <Text id={item.label} variant="heading-strong-l" onBackground="neutral-weak">
+                      {item.label}
+                    </Text>
+                    <Text variant="body-default-l">{item.value}</Text>
+                  </Row>
+                ))}
+              </Column>
+            </>
+          )}
+
+          {about.interests?.display && (
+            <>
+              <Heading as="h2" id={about.interests.title} variant="display-strong-s" marginBottom="m">
+                {about.interests.title}
+              </Heading>
+              <Column fillWidth gap="l" marginBottom="40">
+                {about.interests.items.map((item, index) => (
+                  <Row key={`${item.label}-${index}`} fillWidth horizontal="between" gap="l">
+                    <Text id={item.label} variant="heading-strong-l" onBackground="neutral-weak">
+                      {item.label}
+                    </Text>
+                    <Text variant="body-default-l">{item.value}</Text>
+                  </Row>
+                ))}
+              </Column>
+            </>
+          )}
+
+          {about.references?.display && (
+            <>
+              <Heading as="h2" id={about.references.title} variant="display-strong-s" marginBottom="m">
+                {about.references.title}
+              </Heading>
+              <Column fillWidth gap="l" marginBottom="40">
+                {about.references.items.map((item, index) => (
                   <Row key={`${item.label}-${index}`} fillWidth horizontal="between" gap="l">
                     <Text id={item.label} variant="heading-strong-l" onBackground="neutral-weak">
                       {item.label}

@@ -109,6 +109,8 @@ export interface Home extends BasePageConfig {
   };
   /** The sub text which appears below the headline */
   subline: React.ReactNode;
+  /** Manifesto paragraphs shown below the hero */
+  manifesto?: React.ReactNode[];
 }
 
 /**
@@ -199,6 +201,34 @@ export interface About extends BasePageConfig {
       name: string;
       /** Description of studies */
       description: React.ReactNode;
+    }>;
+  };
+  /** Interests section */
+  interests?: {
+    /** Whether to display the interests section */
+    display: boolean;
+    /** Title of the interests section */
+    title: string;
+    /** List of interest items */
+    items: Array<{
+      /** Label of the item */
+      label: string;
+      /** Value of the item */
+      value: string;
+    }>;
+  };
+  /** References section */
+  references?: {
+    /** Whether to display the references section */
+    display: boolean;
+    /** Title of the references section */
+    title: string;
+    /** List of reference items */
+    items: Array<{
+      /** Label of the item */
+      label: string;
+      /** Value of the item */
+      value: string;
     }>;
   };
   /** Technical skills section */

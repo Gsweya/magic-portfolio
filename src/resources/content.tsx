@@ -79,6 +79,28 @@ const home: Home = {
       software. Every line of code is an argument for how the future should function.
     </>
   ),
+  manifesto: [
+    <>
+      In developing technology, we do not merely build tools — we try to convince the world that
+      this is the best way of doing things. Every line of code is an argument. Every deployment is a
+      vote for how the future should function.
+    </>,
+    <>
+      I believe the world is a construction that has come from the choice of us humans. There is no
+      natural order to how software should be written, how markets should behave, or how people
+      should connect. We decided all of it. And because we decided it, we can decide differently.
+    </>,
+    <>
+      My work is grounded in this belief. I build not for abstraction&apos;s sake, but for practical
+      impact. I prefer reality — difficult, messy, and honest — over comfortable illusion. Through
+      that lens, I can see what needs fixing, and I can build things that matter.
+    </>,
+    <>
+      The technologies we build today will become the infrastructure of tomorrow. That is not a
+      small responsibility. It demands that we think not only about what works, but about what
+      endures.
+    </>,
+  ],
 };
 
 const about: About = {
@@ -181,6 +203,28 @@ const about: About = {
         name: "Martin Luther Primary School",
         description: <>Primary Education (2015 – 2017).</>,
       },
+      {
+        name: "Brain Trust Primary School",
+        description: <>Primary Education (2014, transferred student).</>,
+      },
+      {
+        name: "The Lion of Judah Academy",
+        description: <>Primary Education, Classes 1 – 3 (2011 – 2013).</>,
+      },
+    ],
+  },
+  interests: {
+    display: true,
+    title: "Interests",
+    items: [
+      { label: "Primary", value: "Graphics Design" },
+    ],
+  },
+  references: {
+    display: true,
+    title: "References",
+    items: [
+      { label: "Status", value: "Available upon request" },
     ],
   },
   technical: {

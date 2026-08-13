@@ -73,8 +73,8 @@ const fonts: FontsConfig = {
 const style: StyleConfig = {
   theme: "system", // dark | light | system
   neutral: "sand", // sand | gray | slate | mint | rose | dusk | custom
-  brand: "moss", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  accent: "orange", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
+  brand: "blue", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
+  accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic
   border: "playful", // rounded | playful | conservative | sharp
@@ -105,15 +105,15 @@ const effects: EffectsConfig = {
     radius: 100,
   },
   gradient: {
-    display: false,
-    opacity: 100,
+    display: true,
+    opacity: 60,
     x: 50,
-    y: 60,
+    y: 55,
     width: 100,
-    height: 50,
+    height: 55,
     tilt: 0,
-    colorStart: "accent-background-strong",
-    colorEnd: "page-background",
+    colorStart: "brand-background-strong",
+    colorEnd: "accent-background-strong",
   },
   dots: {
     display: true,
