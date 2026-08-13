@@ -13,17 +13,25 @@ import {
   RevealFx,
   SpacingToken,
 } from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers } from "@/components";
+import { Footer, Header, RouteGuard, Providers, ThemeFavicon } from "@/components";
 import { baseURL, effects, fonts, style, dataStyle, home, person } from "@/resources";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: home.title,
-    description: home.description,
-    baseURL: baseURL,
-    path: home.path,
-    image: home.image,
-  });
+  return {
+    ...Meta.generate({
+      title: home.title,
+      description: home.description,
+      baseURL: baseURL,
+      path: home.path,
+      image: home.image,
+    }),
+    icons: {
+      icon: [
+        { url: "/images/logo-black.png", media: "(prefers-color-scheme: light)", type: "image/png" },
+        { url: "/images/logo-white.png", media: "(prefers-color-scheme: dark)", type: "image/png" },
+      ],
+    },
+  };
 }
 
 export default async function RootLayout({
@@ -104,6 +112,7 @@ export default async function RootLayout({
         />
       </head>
       <Providers>
+        <ThemeFavicon />
         <Column
           as="body"
           background="page"

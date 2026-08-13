@@ -14,6 +14,7 @@ import {
 } from "@once-ui-system/core";
 import { home, about, blog, work, person, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
+import { Logo } from "@/components/Logo";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 
@@ -45,6 +46,9 @@ export default function Home() {
       />
       <Column fillWidth horizontal="center" gap="m">
         <Column maxWidth="s" horizontal="center" align="center">
+          <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="16">
+            <Logo width={112} style={{ margin: "0 auto" }} />
+          </RevealFx>
           {home.featured.display && (
             <RevealFx
               fillWidth

@@ -10,13 +10,8 @@ const nextConfig = {
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   transpilePackages: ["next-mdx-remote"],
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "www.google.com",
-        pathname: "**",
-      },
-    ],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   sassOptions: {
     compiler: "modern",

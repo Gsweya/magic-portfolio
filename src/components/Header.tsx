@@ -3,10 +3,11 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
+import { Fade, Flex, Line, Row, SmartLink, ToggleButton } from "@once-ui-system/core";
 
 import { routes, display, person, about, blog, work, gallery } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
+import { Logo } from "./Logo";
 import styles from "./Header.module.scss";
 
 type TimeDisplayProps = {
@@ -72,10 +73,17 @@ export const Header = () => {
           position: "fixed",
         }}
       >
-        <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {display.location && (
-            <Row s={{ hide: true }}>{person.displayLocation ?? person.location}</Row>
-          )}
+        <Row paddingLeft="12" fillWidth vertical="center" gap="12" textVariant="body-default-s">
+          <Row vertical="center" gap="12">
+            {routes["/"] && (
+              <SmartLink href="/" aria-label="Home">
+                <Logo width={36} style={{ cursor: "pointer" }} />
+              </SmartLink>
+            )}
+            {display.location && (
+              <Row s={{ hide: true }}>{person.displayLocation ?? person.location}</Row>
+            )}
+          </Row>
         </Row>
         <Row fillWidth horizontal="center">
           <Row

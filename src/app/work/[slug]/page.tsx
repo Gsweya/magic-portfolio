@@ -22,14 +22,6 @@ import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
 
-function domainOf(url: string): string {
-  try {
-    return new URL(url).hostname;
-  } catch {
-    return url;
-  }
-}
-
 const stackIcons: Record<string, string> = {
   "spring boot": "spring",
   spring: "spring",
@@ -153,61 +145,22 @@ export default async function Project({
         </Row>
       </Row>
       {post.metadata.link && (
-        <Column fillWidth gap="m" marginBottom="32">
-          <Row fillWidth horizontal="between" vertical="center" gap="m" wrap>
-            <Row gap="12" vertical="center">
-              <img
-                src={`https://www.google.com/s2/favicons?domain=${domainOf(post.metadata.link)}&sz=64`}
-                alt=""
-                width={28}
-                height={28}
-                style={{ borderRadius: 6, flexShrink: 0 }}
-              />
-              <Text variant="label-strong-m">Live preview</Text>
-            </Row>
-            <Button href={post.metadata.link} variant="secondary" size="s" arrowIcon>
-              Open live site
-            </Button>
-          </Row>
-          {post.metadata.preview !== false ? (
-            <div
-              style={{
-                position: "relative",
-                width: "100%",
-                height: 480,
-                overflow: "hidden",
-                borderRadius: "var(--radius-m)",
-                border: "1px solid var(--neutral-alpha-medium)",
-              }}
-            >
-              <iframe
-                src={post.metadata.link}
-                title={`${post.metadata.title} live preview`}
-                style={{ width: "100%", height: "100%", border: "none" }}
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin allow-forms"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-          ) : (
-            <Column
-              fillWidth
-              gap="m"
-              padding="xl"
-              border="neutral-alpha-medium"
-              radius="m"
-              background="neutral-alpha-weak"
-              align="center"
-            >
-              <Text variant="body-default-m" onBackground="neutral-weak">
-                This site blocks in-page previews, but it&apos;s live — open it to explore.
-              </Text>
-            </Column>
-          )}
-        </Column>
+        <Row fillWidth horizontal="center" marginBottom="32">
+          <Button href={post.metadata.link} variant="secondary" size="s" arrowIcon>
+            Open live site
+          </Button>
+        </Row>
       )}
       {post.metadata.images.length > 0 && (
-        <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} />
+        <Media
+          priority
+          aspectRatio="16 / 9"
+          radius="m"
+          objectFit="contain"
+          background="neutral-alpha-weak"
+          alt={post.metadata.title}
+          src={post.metadata.images[0]}
+        />
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <CustomMDX source={post.content} />
