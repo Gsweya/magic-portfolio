@@ -8,7 +8,6 @@ import {
   Column,
   Flex,
   Heading,
-  Media,
   Text,
   SmartLink,
   Row,
@@ -123,6 +122,15 @@ export default async function Project({
         <SmartLink href="/work">
           <Text variant="label-strong-m">Projects</Text>
         </SmartLink>
+        {post.metadata.images.length > 0 && (
+          <img
+            src={post.metadata.images[0]}
+            alt={post.metadata.title}
+            width={40}
+            height={40}
+            style={{ objectFit: "contain", display: "block" }}
+          />
+        )}
         <Heading variant="display-strong-m">{post.metadata.title}</Heading>
         <Text variant="body-default-xs" onBackground="neutral-weak">
           {post.metadata.publishedAt &&
@@ -152,13 +160,6 @@ export default async function Project({
             Open live site
           </Button>
         </Row>
-      )}
-      {post.metadata.images.length > 0 && (
-        <Flex fillWidth horizontal="center" marginBottom="24">
-          <Flex width={64} height={64}>
-            <Media fill objectFit="contain" alt={post.metadata.title} src={post.metadata.images[0]} />
-          </Flex>
-        </Flex>
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <CustomMDX source={post.content} />
