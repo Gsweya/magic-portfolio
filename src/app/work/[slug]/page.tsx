@@ -100,7 +100,8 @@ export default async function Project({
     })) || [];
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="m">
+    <Column fillWidth>
+      <Column as="section" maxWidth="m" horizontal="center" gap="m">
       <Schema
         as="blogPosting"
         baseURL={baseURL}
@@ -172,16 +173,6 @@ export default async function Project({
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <CustomMDX source={post.content} />
       </Column>
-      {(post.metadata.stack?.length ?? 0) > 0 && (
-        <Column fillWidth gap="m" marginTop="24">
-          <Heading as="h2" variant="display-strong-xs" align="center">
-            Tech stack
-          </Heading>
-          <TechMarquee
-            items={(post.metadata.stack ?? []).map((s) => ({ name: s, icon: stackIcon(s) }))}
-          />
-        </Column>
-      )}
       <Column fillWidth gap="40" horizontal="center" marginTop="16">
         <Line maxWidth="40" />
         <Heading as="h2" variant="heading-strong-l" marginBottom="24">
@@ -190,6 +181,17 @@ export default async function Project({
         <Projects exclude={[post.slug]} range={[2]} />
       </Column>
       <ScrollToHash />
+      </Column>
+      {(post.metadata.stack?.length ?? 0) > 0 && (
+        <Column fillWidth gap="m" marginTop="40">
+          <Heading as="h2" variant="display-strong-xs" align="center">
+            Tech stack
+          </Heading>
+          <TechMarquee
+            items={(post.metadata.stack ?? []).map((s) => ({ name: s, icon: stackIcon(s) }))}
+          />
+        </Column>
+      )}
     </Column>
   );
 }

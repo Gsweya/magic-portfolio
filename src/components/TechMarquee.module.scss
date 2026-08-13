@@ -8,23 +8,16 @@
 .track {
   display: flex;
   width: max-content;
-  animation: marquee var(--speed, 32s) linear infinite;
+  animation: marquee var(--speed, 45s) linear infinite;
   will-change: transform;
 }
 
-.card {
+.item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  min-width: 180px;
-  margin-right: 16px;
-  padding: 20px 28px;
-  border-radius: var(--static-radius-xl, 24px);
-  border: 1px solid var(--neutral-alpha-medium);
-  background: var(--neutral-alpha-weak);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  gap: 14px;
+  margin-right: 40px;
+  white-space: nowrap;
 }
 
 @keyframes marquee {
@@ -41,5 +34,9 @@
     animation: none;
     flex-wrap: wrap;
     width: 100%;
+  }
+  .item {
+    margin-right: 24px;
+    margin-bottom: 12px;
   }
 }

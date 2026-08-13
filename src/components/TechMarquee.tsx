@@ -8,7 +8,7 @@ interface TechMarqueeProps {
   speed?: number;
 }
 
-export const TechMarquee: React.FC<TechMarqueeProps> = ({ items, speed = 32 }) => {
+export const TechMarquee: React.FC<TechMarqueeProps> = ({ items, speed = 45 }) => {
   if (!items || items.length === 0) return null;
 
   const track = [...items, ...items];
@@ -17,9 +17,9 @@ export const TechMarquee: React.FC<TechMarqueeProps> = ({ items, speed = 32 }) =
     <div className={styles.viewport}>
       <div className={styles.track} style={{ animationDuration: `${speed}s` }}>
         {track.map((item, index) => (
-          <div className={styles.card} key={`${item.name}-${index}`}>
+          <div className={styles.item} key={`${item.name}-${index}`}>
             {item.icon && <Icon name={item.icon as any} size="l" onBackground="brand-weak" />}
-            <Text variant="heading-strong-s">{item.name}</Text>
+            <Text variant="heading-strong-m">{item.name}</Text>
           </div>
         ))}
       </div>

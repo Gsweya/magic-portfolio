@@ -73,8 +73,9 @@ export default function About() {
   );
   const interestItems = (about.interests?.items ?? []).map((item) => item.value);
   return (
-    <Column maxWidth="m">
-      <Schema
+    <Column fillWidth>
+      <Column maxWidth="m">
+        <Schema
         as="webPage"
         baseURL={baseURL}
         title={about.title}
@@ -258,7 +259,7 @@ export default function About() {
                 title={about.intro.title}
                 size="m"
                 radius="l"
-                open={false}
+                open={true}
               >
                 <Column paddingY="8" gap="m" textVariant="body-default-l">
                   {about.intro.description}
@@ -291,136 +292,152 @@ export default function About() {
           )}
 
           {about.references?.display && (
-            <>
-              <Heading as="h2" id={about.references.title} variant="display-strong-s" marginBottom="m">
-                {about.references.title}
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.references.items.map((item, index) => (
-                  <Row key={`${item.label}-${index}`} fillWidth horizontal="between" gap="l">
-                    <Text id={item.label} variant="heading-strong-l" onBackground="neutral-weak">
-                      {item.label}
-                    </Text>
-                    <Text variant="body-default-l">{item.value}</Text>
-                  </Row>
-                ))}
-              </Column>
-            </>
+            <Column fillWidth gap="m" marginBottom="40">
+              <Accordion
+                id={about.references.title}
+                title={about.references.title}
+                size="m"
+                radius="l"
+                open={false}
+              >
+                <Column fillWidth gap="l" paddingY="8">
+                  {about.references.items.map((item, index) => (
+                    <Row key={`${item.label}-${index}`} fillWidth horizontal="between" gap="l">
+                      <Text id={item.label} variant="heading-strong-l" onBackground="neutral-weak">
+                        {item.label}
+                      </Text>
+                      <Text variant="body-default-l">{item.value}</Text>
+                    </Row>
+                  ))}
+                </Column>
+              </Accordion>
+            </Column>
           )}
 
           {about.work.display && (
-            <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
-                {about.work.title}
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
-                  <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
-                    <Row fillWidth horizontal="between" vertical="end" marginBottom="4">
-                      <Text id={experience.company} variant="heading-strong-l">
-                        {experience.company}
+            <Column fillWidth gap="m" marginBottom="40">
+              <Accordion
+                id={about.work.title}
+                title={about.work.title}
+                size="m"
+                radius="l"
+                open={false}
+              >
+                <Column fillWidth gap="l" paddingY="8">
+                  {about.work.experiences.map((experience, index) => (
+                    <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
+                      <Row fillWidth horizontal="between" vertical="end" marginBottom="4">
+                        <Text id={experience.company} variant="heading-strong-l">
+                          {experience.company}
+                        </Text>
+                        <Text variant="heading-default-xs" onBackground="neutral-weak">
+                          {experience.timeframe}
+                        </Text>
+                      </Row>
+                      <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
+                        {experience.role}
                       </Text>
-                      <Text variant="heading-default-xs" onBackground="neutral-weak">
-                        {experience.timeframe}
-                      </Text>
-                    </Row>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
-                      {experience.role}
-                    </Text>
-                    <Column as="ul" gap="16">
-                      {experience.achievements.map(
-                        (achievement: React.ReactNode, index: number) => (
-                          <Text
-                            as="li"
-                            variant="body-default-m"
-                            key={`${experience.company}-${index}`}
-                          >
-                            {achievement}
-                          </Text>
-                        ),
+                      <Column as="ul" gap="16">
+                        {experience.achievements.map(
+                          (achievement: React.ReactNode, index: number) => (
+                            <Text
+                              as="li"
+                              variant="body-default-m"
+                              key={`${experience.company}-${index}`}
+                            >
+                              {achievement}
+                            </Text>
+                          ),
+                        )}
+                      </Column>
+                      {experience.images && experience.images.length > 0 && (
+                        <Row fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
+                          {experience.images.map((image, index) => (
+                            <Row
+                              key={index}
+                              border="neutral-medium"
+                              radius="m"
+                              minWidth={image.width}
+                              height={image.height}
+                            >
+                              <Media
+                                enlarge
+                                radius="m"
+                                sizes={image.width.toString()}
+                                alt={image.alt}
+                                src={image.src}
+                              />
+                            </Row>
+                          ))}
+                        </Row>
                       )}
                     </Column>
-                    {experience.images && experience.images.length > 0 && (
-                      <Row fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
-                        {experience.images.map((image, index) => (
-                          <Row
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            minWidth={image.width}
-                            height={image.height}
-                          >
-                            <Media
-                              enlarge
-                              radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
-                            />
-                          </Row>
-                        ))}
-                      </Row>
-                    )}
-                  </Column>
-                ))}
-              </Column>
-            </>
+                  ))}
+                </Column>
+              </Accordion>
+            </Column>
           )}
 
           {about.studies.display && (
-            <>
-              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
-                {about.studies.title}
-              </Heading>
-              <Column fillWidth marginBottom="40">
-                <Row
-                  fillWidth
-                  paddingY="m"
-                  paddingX="s"
-                  borderBottom="neutral-medium"
-                  gap="l"
-                  horizontal="between"
-                >
-                  <Text variant="label-strong-s" onBackground="neutral-weak">
-                    Institution
-                  </Text>
-                  <Text variant="label-strong-s" onBackground="neutral-weak">
-                    Details
-                  </Text>
-                </Row>
-                {about.studies.institutions.map((institution, index) => (
+            <Column fillWidth gap="m" marginBottom="40">
+              <Accordion
+                id={about.studies.title}
+                title={about.studies.title}
+                size="m"
+                radius="l"
+                open={false}
+              >
+                <Column fillWidth paddingY="8">
                   <Row
-                    key={`${institution.name}-${index}`}
                     fillWidth
                     paddingY="m"
                     paddingX="s"
-                    borderBottom="neutral-alpha-medium"
+                    borderBottom="neutral-medium"
                     gap="l"
                     horizontal="between"
-                    vertical="center"
                   >
-                    <Text id={institution.name} variant="body-default-m">
-                      {institution.name}
+                    <Text variant="label-strong-s" onBackground="neutral-weak">
+                      Institution
                     </Text>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
-                      {institution.description}
+                    <Text variant="label-strong-s" onBackground="neutral-weak">
+                      Details
                     </Text>
                   </Row>
-                ))}
-              </Column>
-            </>
-          )}
-
-          {about.technical.display && stackItems.length > 0 && (
-            <Column fillWidth gap="m" marginTop="40">
-              <Heading as="h2" variant="display-strong-s" align="center">
-                Technologies I work with
-              </Heading>
-              <TechMarquee items={stackItems} />
+                  {about.studies.institutions.map((institution, index) => (
+                    <Row
+                      key={`${institution.name}-${index}`}
+                      fillWidth
+                      paddingY="m"
+                      paddingX="s"
+                      borderBottom="neutral-alpha-medium"
+                      gap="l"
+                      horizontal="between"
+                      vertical="center"
+                    >
+                      <Text id={institution.name} variant="body-default-m">
+                        {institution.name}
+                      </Text>
+                      <Text variant="body-default-m" onBackground="neutral-weak">
+                        {institution.description}
+                      </Text>
+                    </Row>
+                  ))}
+                </Column>
+              </Accordion>
             </Column>
           )}
+
         </Column>
       </Row>
+      </Column>
+      {about.technical.display && stackItems.length > 0 && (
+        <Column fillWidth gap="m" marginTop="40">
+          <Heading as="h2" variant="display-strong-s" align="center">
+            Technologies I work with
+          </Heading>
+          <TechMarquee items={stackItems} />
+        </Column>
+      )}
     </Column>
   );
 }
