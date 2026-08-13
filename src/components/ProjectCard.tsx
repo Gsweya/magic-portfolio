@@ -2,6 +2,7 @@
 
 import { Card, Column, Media, Row, Avatar, Text, SmartLink } from "@once-ui-system/core";
 import { person } from "@/resources";
+import { formatDate } from "@/utils/formatDate";
 
 interface ProjectCardProps {
   href: string;
@@ -12,6 +13,7 @@ interface ProjectCardProps {
   description: string;
   avatars: { src: string }[];
   link: string;
+  publishedAt?: string;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -23,6 +25,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   avatars,
   link,
+  publishedAt,
 }) => {
   return (
     <Card
@@ -55,6 +58,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               <Avatar src={avatars[0]?.src ?? person.avatar} size="s" />
               <Text variant="label-default-s">{person.name}</Text>
             </Row>
+            {publishedAt && (
+              <Text variant="body-default-xs" onBackground="neutral-weak">
+                {formatDate(publishedAt, false).toLowerCase()}
+              </Text>
+            )}
           </Row>
           <Text variant="heading-strong-l" wrap="balance">
             {title}

@@ -15,6 +15,7 @@ import {
   Avatar,
   Line,
   Tag,
+  Accordion,
 } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
@@ -100,7 +101,7 @@ export default async function Project({
     })) || [];
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l">
+    <Column as="section" maxWidth="m" horizontal="center" gap="m">
       <Schema
         as="blogPosting"
         baseURL={baseURL}
@@ -122,12 +123,13 @@ export default async function Project({
         <SmartLink href="/work">
           <Text variant="label-strong-m">Projects</Text>
         </SmartLink>
-        <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
-          {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
-        </Text>
         <Heading variant="display-strong-m">{post.metadata.title}</Heading>
+        <Text variant="body-default-xs" onBackground="neutral-weak">
+          {post.metadata.publishedAt &&
+            `Built ${formatDate(post.metadata.publishedAt).toLowerCase()}`}
+        </Text>
       </Column>
-      <Row marginBottom="32" horizontal="center">
+      <Row marginBottom="24" horizontal="center">
         <Row gap="16" vertical="center">
           {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="s" />}
           <Text variant="label-default-m" onBackground="brand-weak">
@@ -145,15 +147,15 @@ export default async function Project({
         </Row>
       </Row>
       {post.metadata.link && (
-        <Row fillWidth horizontal="center" marginBottom="32">
+        <Row fillWidth horizontal="center" marginBottom="24">
           <Button href={post.metadata.link} variant="secondary" size="s" arrowIcon>
             Open live site
           </Button>
         </Row>
       )}
       {post.metadata.images.length > 0 && (
-        <Flex fillWidth horizontal="center" marginBottom="32">
-          <Flex width={96} height={96}>
+        <Flex fillWidth horizontal="center" marginBottom="24">
+          <Flex width={64} height={64}>
             <Media fill objectFit="contain" alt={post.metadata.title} src={post.metadata.images[0]} />
           </Flex>
         </Flex>
@@ -162,22 +164,21 @@ export default async function Project({
         <CustomMDX source={post.content} />
       </Column>
       {(post.metadata.stack?.length ?? 0) > 0 && (
-        <Column fillWidth gap="m" marginTop="32">
-          <Heading as="h2" variant="display-strong-xs">
-            Stack
-          </Heading>
-          <Row wrap gap="8">
-            {post.metadata.stack?.map((s) => (
-              <Tag key={s} size="l" prefixIcon={stackIcon(s)}>
-                {s}
-              </Tag>
-            ))}
-          </Row>
+        <Column fillWidth marginTop="16">
+          <Accordion title="Technical Stack" icon="chevronDown" size="m" radius="l">
+            <Row wrap gap="8" paddingY="16">
+              {post.metadata.stack?.map((s) => (
+                <Tag key={s} size="l" prefixIcon={stackIcon(s)}>
+                  {s}
+                </Tag>
+              ))}
+            </Row>
+          </Accordion>
         </Column>
       )}
-      <Column fillWidth gap="40" horizontal="center" marginTop="40">
+      <Column fillWidth gap="40" horizontal="center" marginTop="16">
         <Line maxWidth="40" />
-        <Heading as="h2" variant="heading-strong-xl" marginBottom="24">
+        <Heading as="h2" variant="heading-strong-l" marginBottom="24">
           Related projects
         </Heading>
         <Projects exclude={[post.slug]} range={[2]} />

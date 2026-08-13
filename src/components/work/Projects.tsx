@@ -37,6 +37,7 @@ export function Projects({ range, exclude, columns = "2" }: ProjectsProps) {
           content={post.content}
           avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}
           link={post.metadata.link || ""}
+          publishedAt={post.metadata.publishedAt}
         />
       ))}
     </Grid>
