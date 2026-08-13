@@ -14,7 +14,7 @@ const person: Person = {
   firstName: "Galanda",
   lastName: "John Sweya",
   name: `Galanda John Sweya`,
-  role: "Software Engineer",
+  role: "CS Student",
   avatar: "/images/avatar.jpg",
   email: "sweya.galanda@gmail.com",
   location: "Africa/Dar_es_Salaam", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -58,7 +58,7 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
+  description: `Portfolio website showcasing my work as a computer science student`,
   headline: <>Technology shapes the way we live</>,
   featured: {
     display: true,
@@ -74,9 +74,8 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm {person.firstName}, a {person.role.toLowerCase()} at{" "}
-      <Text as="span" size="xl" weight="strong">Xhubantu</Text>, where I build event-based social
-      software. Every line of code is an argument for how the future should function.
+      I'm {person.firstName}, a CS student who likes to use computer technology to solve problems —
+      right now through programming and graphics design.
     </>
   ),
   manifesto: [
@@ -150,8 +149,20 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
+        company: "PSSF",
+        timeframe: "3 August - 25 September 2026",
+        role: "IPT Intern",
+        achievements: [
+          <>
+            Undertaking my Industrial Practical Training (IPT) at the PSSF headquarters in Dodoma,
+            applying my computer science skills to real systems in a professional environment.
+          </>,
+        ],
+        images: [],
+      },
+      {
         company: "Xhubantu",
-        timeframe: "2025 - Present",
+        timeframe: "Currently working on",
         role: "Co-founder & Developer",
         achievements: [
           <>
@@ -182,8 +193,7 @@ const about: About = {
         images: [],
       },
     ],
-  },
-  studies: {
+  },  studies: {
     display: true, // set to false to hide this section
     title: "Studies",
     institutions: [
