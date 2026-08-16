@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Column, Row } from "@once-ui-system/core";
+import { Column } from "@once-ui-system/core";
 import styles from "./aboutTabs.module.scss";
 
 export interface AboutTab {
@@ -16,7 +16,7 @@ export const AboutTabs: React.FC<{ tabs: AboutTab[] }> = ({ tabs }) => {
 
   return (
     <Column fillWidth gap="m">
-      <Row wrap gap="8" role="tablist">
+      <div className={styles.tabs} role="tablist">
         {tabs.map((tab) => {
           const isActive = tab.id === current?.id;
           return (
@@ -32,7 +32,7 @@ export const AboutTabs: React.FC<{ tabs: AboutTab[] }> = ({ tabs }) => {
             </button>
           );
         })}
-      </Row>
+      </div>
       <Column key={current?.id} fillWidth role="tabpanel">
         {current?.content}
       </Column>

@@ -6,17 +6,13 @@ summary: "A B2B bulk import procurement platform for the Tanzanian market, with 
 images: ["/images/logo-muda.png"]
 stack:
   - Go
-  - PostgreSQL
   - Redis
-  - Docker
-  - Fly.io
   - React
-  - TypeScript
   - Vite
-  - Turbo
-  - Nginx
+  - TypeScript
+  - PostgreSQL
 ---
 
 A B2B bulk import procurement platform for the Tanzanian market, with a secondary storefront for leftover inventory sales.
 
-Built as a monorepo so the Go backend services, Vite frontend portals, shared packages, and infrastructure can evolve together while still deploying independently.
+Built as a monorepo so the Go backend services (Redis-powered caching), Vite frontend portals, shared packages, and infrastructure can evolve together while still deploying independently.

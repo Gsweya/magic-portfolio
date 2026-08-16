@@ -1,13 +1,4 @@
-import {
-  About,
-  Blog,
-  Gallery,
-  Home,
-  Newsletter,
-  Person,
-  Social,
-  Work,
-} from "@/types";
+import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
 import { Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -133,7 +124,7 @@ const about: About = {
     ),
   },
   personalInfo: {
-    display: true,
+    display: false,
     title: "Personal Information",
     items: [
       { label: "Full Name", value: "Galanda John Sweya" },
@@ -145,7 +136,7 @@ const about: About = {
     ],
   },
   work: {
-    display: true, // set to false to hide this section
+    display: false, // set to false to hide this section
     title: "Work Experience",
     experiences: [
       {
@@ -194,8 +185,9 @@ const about: About = {
         images: [],
       },
     ],
-  },  studies: {
-    display: true, // set to false to hide this section
+  },
+  studies: {
+    display: false, // set to false to hide this section
     title: "Education",
     institutions: [
       {
@@ -225,18 +217,14 @@ const about: About = {
     ],
   },
   interests: {
-    display: true,
+    display: false,
     title: "Fields of Interest",
-    items: [
-      { label: "Primary", value: "Graphics Design" },
-    ],
+    items: [{ label: "Primary", value: "Graphics Design" }],
   },
   references: {
     display: true,
     title: "References",
-    items: [
-      { label: "Status", value: "Available upon request" },
-    ],
+    items: [{ label: "Status", value: "Available upon request" }],
   },
   technical: {
     display: true, // set to false to hide this section
@@ -310,9 +298,7 @@ const about: About = {
       },
       {
         title: "Other Skills",
-        description: (
-          <>Secondary craft that informs my work and interests.</>
-        ),
+        description: <>Secondary craft that informs my work and interests.</>,
         tags: [
           {
             name: "Graphics Design",
@@ -332,6 +318,25 @@ const blog: Blog = {
   description: `Essays and reflections on technology, economics, and the nature of work`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
+  books: [
+    {
+      title: "Fractured Minds",
+      subtitle: "A quest for clarity in a confusing world",
+      description: (
+        <>
+          A book about finding your way through the confusion of the modern world — from the
+          overwhelming pace of AI and technology to shifting social, economic and political ground.
+          It is a call to build the right mental models, to trust your choices, and to create your
+          own path.
+        </>
+      ),
+      cover: "/images/fractured-minds-cover.png",
+      pages: 43,
+      publishedAt: "2024-09-27",
+      pdf: "/FRACTURED-MINDS.pdf",
+      link: "https://drive.google.com/file/d/1977bM1WstEaN6n4DhgeTD-xguJiNKNBU/view?usp=drive_link",
+    },
+  ],
 };
 
 const work: Work = {

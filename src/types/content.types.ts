@@ -267,7 +267,27 @@ export interface About extends BasePageConfig {
  * Blog page configuration.
  * @description Configuration for the Blog page, including metadata and navigation label.
  */
-export interface Blog extends BasePageConfig {}
+export interface Blog extends BasePageConfig {
+  /** Books written by the author, pinned at the top of the Writings page */
+  books?: Array<{
+    /** Title of the book */
+    title: string;
+    /** Subtitle of the book */
+    subtitle?: string;
+    /** Short description shown on the book card */
+    description: React.ReactNode;
+    /** Cover image path, should be put inside `public/images` */
+    cover?: string;
+    /** Number of pages */
+    pages?: number;
+    /** Publication date of the book */
+    publishedAt?: string;
+    /** Local PDF path for reading/downloading, should be put inside `public` */
+    pdf?: string;
+    /** External link to the book (e.g., Google Drive) */
+    link?: string;
+  }>;
+}
 
 /**
  * Work/projects page configuration.
